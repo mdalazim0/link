@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>রেসপন্সিভ স্লাইডার</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .slider-container {
+            width: 100%;
+            max-width: 700px; /* ইমেজের প্রস্থ অনুযায়ী কন্টেইনারের প্রস্থ সীমাবদ্ধ করা হয়েছে */
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .slide img {
+            width: 100%;
+            height: auto; /* ইমেজটি পুরোপুরি দেখানোর জন্য */
+            display: block;
+        }
+        .dots {
+            text-align: center;
+            padding: 10px 0;
+        }
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .active {
+            background-color: #717171;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider-container">
+    <div class="slides">
+      
+      <div class="slide">
+        <a href="http://t.me/BasicTouchPro/1951" target="_blank">
+          <img src="https://i.postimg.cc/CxHjd87f/20240918-134237-0000.png" alt="Slide ">
+          </a>
+        </div>
+      <div class="slide">
+        <a href="https://t.me/VanaDataHeroBot/VanaDataHero?startapp=5187944932" target="_blank">
+          <img src="https://i.postimg.cc/Yqvc0BWB/20240918-205005.jpg" alt="Slide 5">
+          </a>
+        </div>
+      
+        <div class="slide">
+            <a href="https://t.me/memefi_coin_bot?start=r_a41318478c" target="_blank">
+                <img src="https://i.postimg.cc/kXDmmxkJ/20240907-224843-0000.png" alt="Slide 2">
+            </a>
+        </div>
+        <div class="slide">
+            <a href="https://t.me/bountybay_bot/deals?startapp=invite-13539c1e4" target="_blank">
+                <img src="https://i.postimg.cc/hvZRmj7R/20240907-224335-0000.png" alt="Slide 3">
+            </a>
+        </div>
+    </div>
+    <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+</div>
+
+<script>
+    let currentIndex = 0;
+    const slides = document.querySelector('.slides');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+        const totalSlides = dots.length;
+        if (index >= totalSlides) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = totalSlides - 1;
+        } else {
+            currentIndex = index;
+        }
+
+        const offset = -currentIndex * 100;
+        slides.style.transform = `translateX(${offset}%)`;
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentIndex].classList.add('active');
+    }
+
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showSlide(index));
+    });
+
+    setInterval(nextSlide, 5000);  // Automatically slide every 5 seconds
+
+    // Allow manual slide by swipe (for touch devices)
+    let startX;
+    document.querySelector('.slider-container').addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    document.querySelector('.slider-container').addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        if (startX > endX + 50) {
+            nextSlide(); // Swipe left to next slide
+        } else if (startX < endX - 50) {
+            showSlide(currentIndex - 1); // Swipe right to previous slide
+        }
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive App Icons or maining</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .app-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .app-icon {
+            text-align: center;
+            flex: 1 1 auto;
+        }
+
+        .app-icon img {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .app-icon img:hover {
+            transform: scale(1.1);
+        }
+
+        .app-icon span {
+            display: block;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    
+  <div class="app-container">
+    
+    
+    
+    
+    <div class="app-icon">
+
+            <a href="https://t.me/BasicTouchPro/2045?single" target="_blank">
+
+                <img src="https://i.postimg.cc/XNRq8pZ5/IMG-20240925-151233-136.jpg" alt="Not_Pixel">
+
+            </a>
+
+            <span>Not Pixel</span>
+
+        </div>
+    <div class="app-icon">
+
+            <a href="https://t.me/tonstationgames_bot/app?startapp=ref_6vpx8wf297f8vu8mbmz2gt" target="_blank">
+
+                <img src="https://i.postimg.cc/5tN4qNnb/IMG-20240922-225523-173.jpg" alt="TON_station">
+
+            </a>
+
+            <span>TON station</span>
+
+        </div>
+    
+  <div class="app-icon">
+            <a href="https://t.me/Binance_Moonbix_bot/start?startApp=ref_5187944932&startapp=ref_5187944932&utm_medium=web_share_copy" target="_blank">
+                <img src="https://i.postimg.cc/cHqVFQRL/IMG-20240918-130734-135.jpg" alt="Binance_Moonbix">
+            </a>
+            <span>Binance Moonbix</span>
+        </div>
+        <div class="app-icon">
+            <a href="https://t.me/hamster_kombaT_bot/start?startapp=kentId5187944932" target="_blank">
+                <img src="https://i.postimg.cc/vBZmkb9d/IMG-20240625-155125-286.jpg" alt="Hamster Kombat">
+            </a>
+            <span>Hamster Kombat</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/blum/app?startapp=ref_JBc69oT0bm" target="_blank">
+                <img src="https://i.postimg.cc/k4Y5dzFR/IMG-20240625-154957-937.jpg" alt="Blum">
+            </a>
+            <span>Blum</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/major/start?startapp=5187944932" target="_blank">
+                <img src="https://i.postimg.cc/BZpFzXKb/IMG-20240707-214507-517.jpg" alt="Magor">
+            </a>
+            <span>Magor</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/memefi_coin_bot?start=r_a41318478c" target="_blank">
+                <img src="https://i.postimg.cc/fWFbq4R6/IMG-20240625-154932-181.jpg" alt="MemeFi">
+            </a>
+            <span>MemeFi</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/bountybay_bot/deals?startapp=invite-13539c1e4" target="_blank">
+                <img src="https://i.postimg.cc/wvW8F9yd/IMG-20240704-164419-313.jpg" alt="BountyBay">
+            </a>
+            <span>BountyBay</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/pixelversexyzbot?start=5187944932" target="_blank">
+                <img src="https://i.postimg.cc/CxpxYjD7/IMG-20240625-154924-033.jpg" alt="Pixelverse">
+            </a>
+            <span>Pixelverse</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/wcoin_tapbot?start=NTE4Nzk0NDkzMg==" target="_blank">
+                <img src="https://i.postimg.cc/Y0hcsTYL/IMG-20240704-164258-793.jpg" alt="Wcoin">
+            </a>
+            <span>Wcoin</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/tapswap_mirror_bot?start=r_5187944932" target="_blank">
+                <img src="https://i.postimg.cc/TP9wtpK9/IMG-20240625-155120-203.jpg" alt="TapSwap">
+            </a>
+            <span>TapSwap</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/gemzcoiN_bot/tap?startapp=5f65TA-UGhq42uNZR9PfN1d" target="_blank">
+                <img src="https://i.postimg.cc/wTC7MKKh/IMG-20240625-155153-357.jpg" alt="Gemz">
+            </a>
+            <span>Gemz</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/BasicTouchPro/1197" target="_blank">
+                <img src="https://i.postimg.cc/25myd4Sy/IMG-20240625-155113-492.jpg" alt="Hot Wallet 🔥">
+            </a>
+            <span>Hot Wallet 🔥</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/Simple_Tap_Bot/app?startapp=1719926981787" target="_blank">
+                <img src="https://i.postimg.cc/cJgXPZbS/IMG-20240704-165129-866.jpg" alt="Simple Tap">
+            </a>
+            <span>Simple Tap</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/cexio_tap_bot?start=1716822893156988" target="_blank">
+                <img src="https://i.postimg.cc/TYD3Zkyh/IMG-20240625-154951-224.jpg" alt="CEX.IO">
+            </a>
+            <span>CEX.IO</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/TimeFarmCryptoBot?start=nzlKc1ukFjFYQBpo" target="_blank">
+                <img src="https://i.postimg.cc/2yP81Wtz/IMG-20240625-154940-657.jpg" alt="Time Farm">
+            </a>
+            <span>Time Farm</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/claytoncoinbot/game?startapp=47e7d0" target="_blank">
+                <img src="https://i.postimg.cc/8C0sxwQC/IMG-20240625-170033-186.jpg" alt="Clayton coin">
+            </a>
+            <span>Clayton coin</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/cryptorank_app_bot/points?startapp=ref_5187944932_" target="_blank">
+                <img src="https://i.postimg.cc/wB36TGjM/IMG-20240830-102158-856.jpg" alt="CryptoRank">
+            </a>
+            <span>CryptoRank</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/BasicTouchPro/983" target="_blank">
+                <img src="https://i.postimg.cc/Zn95YHV7/IMG-20240625-155046-489.jpg" alt="Yescoin">
+            </a>
+            <span>Yescoin</span>
+        </div>
+
+
+        <div class="app-icon">
+            <a href="https://t.me/dotcoin_bot?start=r_5187944932" target="_blank">
+                <img src="https://i.postimg.cc/x1LqbsYB/IMG-20240625-155130-270.jpg" alt="Dotcoin">
+            </a>
+            <span>Dotcoin</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://fintop.io/2s7Z16hh18" target="_blank">
+                <img src="https://i.postimg.cc/MZV7w1hB/IMG-20240821-200229-848.jpg" alt="Fintopio">
+            </a>
+            <span>Fintopio</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/b_usersbot/join?startapp=ref-4AxhpKPvPeGstBXm8zWfEc" target="_blank">
+                <img src="https://i.postimg.cc/8cbnhpYx/IMG-20240816-000336-805.jpg" alt="B 💎">
+            </a>
+            <span>B 💎</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="http://t.me/catsgang_bot/join?startapp=bb2JqGC0NgPjeT2Ta8XKP" target="_blank">
+                <img src="https://i.postimg.cc/dtB8T3rj/IMG-20240713-190940-668.jpg" alt="🐈‍⬛ CATS">
+            </a>
+            <span>🐈‍⬛ CATS</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/money_dogs_bot/money_dogs?startapp=LqFFRsfx" target="_blank">
+                <img src="https://i.postimg.cc/PJ701vGJ/IMG-20240815-214424-450.jpg" alt="DOGS 🐶">
+            </a>
+            <span>DOGS 🐶</span>
+        </div>
+      
+
+        <div class="app-icon">
+            <a href="https://t.me/BasicTouchPro/1059" target="_blank">
+                <img src="https://i.postimg.cc/6617s2Yb/IMG-20240625-155312-743.jpg" alt="Wave Wallet">
+            </a>
+            <span>Wave Wallet</span>
+        </div>
+      
+        <div class="app-icon">
+            <a href="https://t.me/sunwaves_token_bot/app?startapp=r_mdalazim1" target="_blank">
+                <img src="https://i.postimg.cc/0yjw1NvR/Screenshot-20240630-171559-Google-Play-Store.jpg" alt="Sunwavest">
+            </a>
+            <span>Sunwavest</span>
+        </div>
+
+        <div class="app-icon">
+            <a href="https://t.me/athene_official_bot?start=inviteCode_f46acbf2fc06" target="_blank">
+                <img src="https://i.postimg.cc/BQqHktYP/IMG-20240715-155951-195.jpg" alt="Athene">
+            </a>
+            <span>Athene</span>
+        </div>
+      <div class="app-icon">
+
+            <a href="https://t.me/realgoats_bot/run?startapp=0d5c46cf-0d37-4f16-a464-1e5465707785" target="_blank">
+
+                <img src="https://i.postimg.cc/bJSqC55K/IMG-20240907-162400-109.jpg" alt="Goats">
+
+            </a>
+
+            <span>GOATS</span>
+
+        </div>
+      <div class="app-icon">
+
+            <a href="https://t.me/VanaDataHeroBot/VanaDataHero?startapp=5187944932" target="_blank">
+
+                <img src="https://i.postimg.cc/v8rP8f55/IMG-20240918-181540-857.jpg" alt="VANA">
+
+            </a>
+
+            <span>VANA</span>
+
+        </div>
+      
+      <div class="app-icon">
+
+            <a href="http://t.me/RatsKingdom_Bot/join?startapp=66decd51919870e8f96caffc" target="_blank">
+
+                <img src="https://i.postimg.cc/wvzzNNc7/IMG-20240909-162923-739.jpg" alt="Rats">
+
+            </a>
+
+            <span>Rats</span>
+
+        </div>
+      <div class="app-icon">
+
+            <a href="https://t.me/spell_wallet_bot/wallet?startapp=referral=sei1zpevunrthlp3nhmat5zwrunw95m3t2vra5z9zn" target="_blank">
+
+                <img src="https://i.postimg.cc/sfGCJJKc/IMG-20240913-103056-129.jpg" alt="Spell_Wallet">
+
+            </a>
+
+            <span>Spell Wallet</span>
+
+        </div>
+      <div class="app-icon">
+
+            <a href="https://t.me/xkucoinbot/kucoinminiapp?startapp=cm91dGU9JTJGdGFwLWdhbWUlM0ZpbnZpdGVyVXNlcklkJTNENTE4Nzk0NDkzMiUyNnJjb2RlJTNE" target="_blank">
+
+                <img src="https://i.postimg.cc/XJpSmKWn/IMG-20240914-103227-842.jpg" alt="xKucoin">
+
+            </a>
+
+            <span>xKucoin</span>
+
+        </div>
+      <div class="app-icon">
+
+            <a href="https://t.me/booms_io_bot/start?startapp=bro5187944932" target="_blank">
+
+                <img src="https://i.postimg.cc/zvhmXJ3M/IMG-20240914-103215-071.jpg" alt="Booms_coin">
+
+            </a>
+
+            <span>Booms coin</span>
+
+        </div>
+      <div class="app-icon">
+
+            <a href="http://t.me/RealCowsHouse_bot/cowshouse?startapp=kentId5187944932" target="_blank">
+
+                <img src="https://i.postimg.cc/j5m0bWqP/IMG-20240914-103201-668.jpg" alt="Real_Cows">
+
+            </a>
+
+            <span>Real Cows</span>
+
+        </div>
+      <div class="app-icon">
+
+            <a href="https://t.me/theHoldCoinBot/app?startapp=ref_3dbBnC7f" target="_blank">
+
+                <img src="https://i.postimg.cc/D0LKPxJ6/IMG-20240918-133033-517.jpg" alt="HoldCoin">
+
+            </a>
+
+            <span>HoldCoin</span>
+
+        </div>
+      
+    </div>
+
+</body>
+</html>
+
+
+   
