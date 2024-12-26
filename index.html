@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Mini App</title>
+    <script>
+        // পৃষ্ঠা লোডের পরে চালু হবে
+        document.addEventListener('DOMContentLoaded', function () {
+            // Telegram Web App Object
+            const tg = window.Telegram.WebApp;
+
+            // ইউজার ডেটা টেলিগ্রাম থেকে পড়া
+            const userName = tg.initDataUnsafe?.user?.username || 'Unknown';
+            const chatId = tg.initDataUnsafe?.user?.id || 'Unknown';
+
+            // প্যারামিটারযুক্ত URL তৈরি করা
+            const url = `https://telegram25.pages.dev/index.html?name=${userName}&chatid=${chatId}`;
+
+            // লিংক দেখানো
+            const linkElement = document.getElementById('generated-link');
+            linkElement.href = url;
+            linkElement.textContent = url;
+
+            // টেলিগ্রামের Web App ইনিশিয়ালাইজ করা
+            tg.expand(); // পুরো স্ক্রিনে দেখানোর জন্য
+        });
+    </script>
+</head>
+<body>
+    <h1>Telegram Mini App</h1>
+    <p>নিচে আপনার লিংক:</p>
+    <a id="generated-link" href="#">লিংক তৈরি হচ্ছে...</a>
+</body>
+</html>
