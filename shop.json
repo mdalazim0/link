@@ -165,64 +165,6 @@
         "rating": 4.6,
         "reviews": 31,
         "tag": "hot"
-    },
-    {
-        "id": 106,
-        "title": "Content Writing Service",
-        "images": [
-            "https://i.postimg.cc/hjNP5nzL/images-4.jpg"
-        ],
-        "originalPrice": "$50",
-        "discountedPrice": "$35",
-        "description": "High-quality content writing service for websites, blogs and marketing materials.",
-        "keyPoints": [
-            "SEO optimized content",
-            "Native English writers",
-            "Keyword research",
-            "Fast turnaround"
-        ],
-        "rating": 4.7,
-        "reviews": 27,
-        "tag": "new"
-    },
-    {
-        "id": 107,
-        "title": "Social Media Templates",
-        "images": [
-            "https://i.postimg.cc/HkgF3q6t/IMG-20231108-000944-730.jpg",
-            "https://i.postimg.cc/gkfZ4Vmj/IMG-20240810-WA0000.jpg"
-        ],
-        "originalPrice": "$69",
-        "discountedPrice": "$49",
-        "description": "Customizable social media templates for Instagram, Facebook and Twitter.",
-        "keyPoints": [
-            "100+ templates",
-            "PSD and PNG files",
-            "Customizable colors",
-            "All sizes included"
-        ],
-        "rating": 4.4,
-        "reviews": 19,
-        "tag": "popular"
-    },
-    {
-        "id": 108,
-        "title": "Video Editing Presets",
-        "images": [
-            "https://topseotoolsbd.com/wp-content/uploads/2023/11/SEO-Tools-Package-1.jpg",
-            "https://www.kingofdigitalmarketing.com/img/services/SEO%20Services.jpeg"
-        ],
-        "originalPrice": "$89",
-        "discountedPrice": "$65",
-        "description": "Professional video editing presets for Premiere Pro and After Effects.",
-        "keyPoints": [
-            "50+ presets",
-            "4K resolution",
-            "Easy to customize",
-            "Tutorial included"
-        ],
-        "rating": 4.8,
-        "reviews": 38,
-        "tag": "hot"
     }
+    
 ]
