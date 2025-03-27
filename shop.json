@@ -1,5 +1,45 @@
 [
     {
+    "id": 1,
+    "title": "Acode - code editor | FOSS",
+    "images": [
+        "https://play-lh.googleusercontent.com/tBmfTr_TyGtv24MzhVzW1ajjppSw9KjzunMRBFdxHZ10AmvlEokombjZabATWBuH3lk=w480-h960",
+        "https://play-lh.googleusercontent.com/sFEMReDnU2CVc-OnRj1bjSnpIlV8hMxiRfXagM_pnpwi_pkzUIs8b19EO_zLPeGbLZQ=w5120-h2880",
+        "https://play-lh.googleusercontent.com/mse025mrQMFXL3thnxSPucASh9kyZnCV6PUGVV3jL3aEJqIvQQCisp_pn98UPcAmp_A=w2560-h1440",
+        "https://play-lh.googleusercontent.com/r46QV7RQWBeBsYz6H8tpOapo2lmtfkMnOzr51Hnj2ZeWGOtVrvwK2iJI5esMPFexkg=w5120-h2880",
+        "https://play-lh.googleusercontent.com/r46QV7RQWBeBsYz6H8tpOapo2lmtfkMnOzr51Hnj2ZeWGOtVrvwK2iJI5esMPFexkg=w5120-h2880",
+        "https://play-lh.googleusercontent.com/JwLENoiqVVNWhqgnDhuqZks9BfzjmghdL5LFrOuoRjFXnWITImvf2P5jxlwrkH_Hgw=w5120-h2880",
+        "https://play-lh.googleusercontent.com/afpbW77zPfevuoye0kSgXfp0730pgHEJDxnFl4iUbNtRRCBo_r07i0P2fBbiQNqC4-o=w5120-h2880",
+        "https://play-lh.googleusercontent.com/wqOB8BYNzLfufoos5UkOwNrZ-ZDt6mIWSFmLlJSXnqWotXyNdrVuQY_QKiFoO2kYilhf=w2560-h1440",
+        "https://play-lh.googleusercontent.com/5Vmz1nQBH3WN3AP6jCdnqfmshppaxnHTRQazL1OmHPxXvazq3_upFs8w7Q_Gcs7oIQ=w2560-h1440"
+    ],
+    "originalPrice": "2.88",
+    "discountedPrice": "0.49",
+    "description": "Welcome to Acode!\n\nA powerful, lightweight code editor, and web IDE for Android. Now enhanced with cutting-edge features and updates to transform your coding experience.\n\nWhat's New?\n\nStep into the future of coding with our innovative Plugin System. This brand new feature supports a wide range of plugins, boosting the functionality of Acode to meet all your development needs. With over 30 plugins already available in the Plugin Store, the possibilities are endless.\n\nLatest Updates Include:\n\n- Enhanced Ace Editor: Now updated to version 1.22.0 for more efficient editing.\n- Search in All Files: Our beta feature lets you search and replace text in all files within your opened projects.\n- Customizable Quick Tools: Personalize your quick tools to enhance your workflow.\n- Fast File Listing in Find Files (Ctrl + P): Acode now loads and caches files at startup, leading to faster file listing.\n- Ctrl Key Functionality: Take advantage of keyboard shortcuts for actions such as save (Ctrl+S) and open command palette (Ctrl+Shift+P).\n\nWhy Choose Acode?\n\nAcode lets you build and run websites directly within your browser, debug with ease using the integrated console, and edit a wide range of source files - from Python and CSS to Java, JavaScript, Dart, and more.\n",
+    "keyPoints": [
+        "Ad-Free Experience: Enjoy a clean, distraction-free coding environment.",
+        "Universal File Editor: Edit any file directly from your device.",
+        "GitHub Integration: Seamlessly sync your projects with GitHub.",
+        "FTP/SFTP Support: Manage your files efficiently with FTP/SFTP.",
+        "Extensive Syntax Highlighting: Supports over 100 programming languages.",
+        "Personalized Themes: Choose from dozens of unique themes to match your style.",
+        "User-Friendly Interface: Navigate with ease through our intuitive design.",
+        "In-App Preview: Instantly view your HTML/MarkDown files within the app.",
+        "Interactive JavaScript Console: Debug JavaScript code right from the console.",
+        "In-App File Browser: Access your files directly within Acode.",
+        "Open Source: Benefit from our transparent and community-driven project.",
+        "High Performance: Supports files with over 50,000 lines, ensuring smooth workflow.",
+        "Multi-File Support: Work on multiple files simultaneously for productive multitasking.",
+        "Customizable Interface: Adapt Acode to your personal coding style.",
+        "Keyboard Shortcuts: Speed up your coding with handy shortcuts.",
+        "File Recovery: Never lose your work with our reliable file recovery feature.",
+        "File Management: Keep your projects organized with effective file management."
+    ],
+    "rating": 4.6,
+    "reviews": 935,
+    "tag": "premium"
+},
+    {
     "id": 100,
     "title": "A Code Editor Pro version",
     "images": [
