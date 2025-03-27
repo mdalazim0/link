@@ -1,5 +1,29 @@
 [
     {
+    "id": 100,
+    "title": "A Code Editor Pro version",
+    "images": [
+        "https://modyolo.com/wp-content/uploads/2022/02/acode-powerful-code-editor.jpg",
+        "https://modyolo.com/wp-content/uploads/2022/02/acode-powerful-code-editor-2.jpg",
+        "https://modyolo.com/wp-content/uploads/2022/02/acode-powerful-code-editor-3.jpg"
+    ],
+    "originalPrice": "04.99",
+    "discountedPrice": "0.99",
+    "description": "Discover Acode - a sleek, powerful IDE and code editor for Android.\n\nWelcome to Acode!\n\nA powerful, lightweight code editor, and web IDE for Android. Now enhanced with cutting-edge features and updates to transform your coding experience.\n\nWhat's New?\n\nStep into the future of coding with our innovative Plugin System. This brand new feature supports a wide range of plugins, boosting the functionality of Acode to meet all your development needs. With over 30 plugins already available in the Plugin Store, the possibilities are endless.\n\nLatest Updates Include:\n\n- Enhanced Ace Editor: Now updated to version 1.22.0 for more efficient editing.\n- Search in All Files: Our beta feature lets you search and replace text in all files within your opened projects.\n- Customizable Quick Tools: Personalize your quick tools to enhance your workflow.\n- Fast File Listing in Find Files (Ctrl + P): Acode now loads and caches files at startup, leading to faster file listing.\n- Ctrl Key Functionality: Take advantage of keyboard shortcuts for actions such as save (Ctrl+S) and open command palette (Ctrl+Shift+P).",
+    "keyPoints": [
+        "Universal File Editor: Edit any file directly from your device.",
+        "GitHub Integration: Seamlessly sync your projects with GitHub.",
+        "FTP/SFTP Support: Manage your files efficiently with FTP/SFTP.",
+        "Customizable Interface: Adapt Acode to your personal coding style.",
+        "No Ads",
+        "No crack version and without harmful virus good quality",
+        "No renew charge lifetime access"
+    ],
+    "rating": 4.3,
+    "reviews": 963,
+    "tag": "hot"
+    },
+    {
         "id": 101,
         "title": "Premium Web Template",
         "images": [
