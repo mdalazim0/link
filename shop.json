@@ -67,6 +67,33 @@
     "rating": 4.1,
     "reviews": 3002,
     "tag": "new"
+},
+{
+    "id": 3,
+    "title": "🌙 Ramadan & Eid Special Landing Page – Coding File ",
+    "images": [
+        "https://i.postimg.cc/wBNym4TF/Screenshot-20250328-074815-Telegram.jpg",
+        "https://i.postimg.cc/wj7s6TCC/Screenshot-20250328-074849-Telegram.jpg",
+        "https://i.postimg.cc/dtWyPTxR/Screenshot-20250328-074827-Telegram.jpg",
+        "https://i.postimg.cc/pd1vPPt6/Screenshot-20250328-082005-Telegram.jpg",
+        "https://i.postimg.cc/RZyJqx9N/Screenshot-20250328-075013-Telegram.jpg",
+        "https://i.postimg.cc/V6BJ7StC/Screenshot-20250328-075034-Telegram.jpg",
+        "https://i.postimg.cc/zB1LSwyN/Screenshot-20250328-075026-Telegram.jpg",
+        "https://i.postimg.cc/90mrsWPN/Screenshot-20250328-075040-Telegram.jpg"
+    ],
+    "originalPrice": "10.99",
+    "discountedPrice": "08.99",
+    "description": "Boost your ad network earnings this Ramadan & Eid with our premium landing page template! This fully responsive, high-converting, and SEO-optimized landing page is perfect for displaying Adsterra, Monetag, Advertyka, and other direct link ads. Whether you’re a marketer, developer, or agency, this landing page will help you maximize revenue!\n\n🔹 What You Get with This Landing Page?\n✅ Clean & Well-Structured HTML, CSS & JavaScript Code\n✅ Fully Responsive & Mobile-Friendly Design\n✅ SEO-Optimized for Organic Traffic Growth\n✅ High Conversion Rate for Maximum Earnings\n✅ Fast Loading Speed for Better User Experience\n✅ Compatible with Adsterra, Monetag, Advertyka & More\n✅ Easy Customization – Modify Colors, Fonts & Content Easily\n✅ Ramadan & Eid-Themed UI for Festive Campaigns\n\n✨ 🎁 Special Offer: Get an exclusive Ramadan discount – Limited-time deal!\n",
+    "keyPoints": [
+        "Ramadan & Eid Landing Page HTML Template",
+        "High-Converting Ad Network Landing Page",
+        "Fully Responsive & SEO-Optimized Design",
+        "Fast, Lightweight & Easy-to-Edit Codebase",
+        "Supports Adsterra, Monetag, Advertyka Direct Links"
+    ],
+    "rating": 5,
+    "reviews": 2158,
+    "tag": "exclusive"
 }
     
 ]
