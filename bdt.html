@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Trading Calculator</title>
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --secondary: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --border: #1e293b;
+      --green-candle: #16a34a;
+      --red-candle: #dc2626;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    body {
+      background-color: var(--darker);
+      color: var(--light);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* Main layout */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* Candlestick Animation */
+    .candlestick-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.15;
+      overflow: hidden;
+    }
+    
+    .candlestick {
+      position: absolute;
+      width: 4px;
+      background: var(--green-candle);
+      animation: floatUp linear infinite;
+      opacity: 0.7;
+    }
+    
+    .candlestick.red {
+      background: var(--red-candle);
+    }
+    
+    .candlestick::before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 2px;
+      background: inherit;
+      left: -2px;
+    }
+    
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.7;
+      }
+      90% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-100px) scale(1.2);
+        opacity: 0;
+      }
+    }
+    
+    /* Calculator Container */
+    .calculator-container {
+      width: 100%;
+      max-width: 800px;
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(5px);
+      margin-bottom: 30px;
+    }
+    
+    .header {
+      padding: 20px;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      text-align: center;
+      position: relative;
+    }
+    
+    .header h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    
+    .header p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    .form-section {
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-section.hidden {
+      display: none;
+    }
+    
+    .input-group {
+      margin-bottom: 15px;
+    }
+    
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--gray);
+    }
+    
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--light);
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+    
+    .input-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+    
+    .preset-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 15px 0;
+    }
+    
+    .preset-btn {
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--light);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex: 1;
+      min-width: 60px;
+      text-align: center;
+    }
+    
+    .preset-btn:hover {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: var(--primary);
+    }
+    
+    .generate-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s;
+    }
+    
+    .generate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+    }
+    
+    .results-section {
+      padding: 20px;
+      display: none;
+    }
+    
+    .results-section.visible {
+      display: block;
+    }
+    
+    .back-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--gray);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      margin-bottom: 15px;
+      transition: all 0.3s;
+    }
+    
+    .back-btn:hover {
+      background: var(--dark);
+    }
+    
+    .scroll-table {
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+    
+    th {
+      background: var(--primary-dark);
+      color: white;
+      padding: 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 13px;
+      position: sticky;
+      top: 0;
+    }
+    
+    td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    
+    tbody tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.03);
+    }
+    
+    tbody tr:hover {
+      background: rgba(255, 255, 255, 0.07);
+    }
+    
+    .profit {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+    
+    .loss {
+      color: var(--danger);
+      font-weight: 600;
+    }
+    
+    .warning-row {
+      background: rgba(239, 68, 68, 0.1);
+    }
+    
+    .total-row {
+      background: rgba(16, 185, 129, 0.1);
+      font-weight: 600;
+    }
+    
+    .total-row td {
+      color: var(--secondary);
+    }
+    
+    /* Trading Info Section */
+    .trading-info-section {
+      width: 100%;
+      max-width: 800px;
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(5px);
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+    
+    .trading-info {
+      color: var(--light);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .info-title {
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 15px;
+      color: var(--primary);
+    }
+    
+    .info-box {
+      margin-bottom: 15px;
+      padding-left: 10px;
+      border-left: 2px solid var(--primary);
+    }
+    
+    .info-subtitle {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--light);
+    }
+    
+    .info-box code {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: var(--secondary);
+    }
+    
+    .summary-box {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(255, 240, 224, 0.1);
+      border-left: 4px solid var(--warning);
+      border-radius: 0 6px 6px 0;
+    }
+    
+    .summary-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--warning);
+    }
+    
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--danger);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: none;
+      animation: fadeIn 0.3s;
+      z-index: 100;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @media (max-width: 600px) {
+      .main-content {
+        padding: 10px;
+      }
+      
+      .preset-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+      
+      th, td {
+        padding: 10px 8px;
+        font-size: 12px;
+      }
+      
+      .header h2 {
+        font-size: 20px;
+      }
+      
+      .header p {
+        font-size: 13px;
+      }
+      
+      .input-group input {
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+      
+      .trading-info-section {
+        padding: 15px;
+      }
+      
+      .trading-info {
+        font-size: 13px;
+      }
+      
+      .info-title {
+        font-size: 14px;
+      }
+      
+      .info-box {
+        margin-bottom: 12px;
+      }
+      
+      .summary-box {
+        padding: 12px;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Candlestick Animation Background -->
+  <div class="candlestick-container" id="candlestickContainer"></div>
+  
+  <div class="main-content">
+    <!-- Calculator Container -->
+    <div class="calculator-container">
+      <div class="header">
+        <h2>Live Trading Calculator</h2>
+        <p>Professional money management with real trading feel</p>
+      </div>
+      
+      <div class="form-section" id="formSection">
+        <div class="input-group">
+          <label for="customBalance">Trading Balance (Min 100)</label>
+          <input type="number" id="customBalance" placeholder="Example: 5000">
+        </div>
+        
+        <div class="input-group">
+          <label for="firstTrade">First Trade Amount (Optional)</label>
+          <input type="number" id="firstTrade" placeholder="Default: 1% of balance">
+        </div>
+        
+        <div class="preset-buttons">
+          <button class="preset-btn" onclick="setBalance(100)">100</button>
+          <button class="preset-btn" onclick="setBalance(200)">200</button>
+          <button class="preset-btn" onclick="setBalance(300)">300</button>
+          <button class="preset-btn" onclick="setBalance(400)">400</button>
+          <button class="preset-btn" onclick="setBalance(500)">500</button>
+          <button class="preset-btn" onclick="setBalance(1000)">1000</button>
+        </div>
+        
+        <button class="generate-btn" onclick="generatePlan()">Generate Trading Plan</button>
+      </div>
+      
+      <div class="results-section" id="resultsSection">
+        <button class="back-btn" onclick="showForm()">← Back to Calculator</button>
+        <div class="scroll-table">
+          <table id="resultsTable">
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Amount</th>
+                <th>Profit</th>
+                <th>Total Return</th>
+                <th>Remaining Loss</th>
+                <th>Cumulative</th>
+              </tr>
+            </thead>
+            <tbody id="resultsBody">
+              <!-- Results will appear here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trading Info Section -->
+    <div class="trading-info-section">
+      <div class="trading-info">
+        <p class="info-title">🧾 ট্রেডিং সিস্টেম (Wingo 30s):</p>
+        <p>প্রতি ট্রেডে <strong>২% সার্ভিস ফি</strong> কাটা হয়। যেমন আপনি ১০০ টাকা ট্রেড করলে, <strong>Contract Amount হয় ৯৮ টাকা।</strong></p>
+
+        <div class="info-box">
+          <p class="info-subtitle">🟥 1. Green/Red সিলেক্ট:</p>
+          <p>➤ জয় করলে পাবেন: <code>98 × 2 = 196</code><br>
+          ➤ রেজাল্ট 5 (Green) বা 0 (Red) হলে পাবেন: <code>98 × 1.5 = 147</code></p>
+        </div>
+
+        <div class="info-box">
+          <p class="info-subtitle">🟪 2. Violet সিলেক্ট:</p>
+          <p>➤ যদি রেজাল্ট হয় 0 বা 5 ➤ পাবেন: <code>98 × 4.5 = 441</code></p>
+        </div>
+
+        <div class="info-box">
+          <p class="info-subtitle">🔢 3. Number সিলেক্ট:</p>
+          <p>➤ যদি আপনার নির্বাচিত নম্বরের সাথে রেজাল্ট মিলে যায় ➤ পাবেন: <code>98 × 9 = 882</code></p>
+        </div>
+
+        <div class="info-box">
+          <p class="info-subtitle">🔼 4. Big সিলেক্ট:</p>
+          <p>➤ রেজাল্ট যদি হয় 5,6,7,8,9 ➤ পাবেন: <code>98 × 2 = 196</code></p>
+        </div>
+
+        <div class="info-box">
+          <p class="info-subtitle">🔽 5. Small সিলেক্ট:</p>
+          <p>➤ রেজাল্ট যদি হয় 0,1,2,3,4 ➤ পাবেন: <code>98 × 2 = 196</code></p>
+        </div>
+
+        <div class="summary-box">
+          <p class="summary-title">📌 সারাংশ:</p>
+          <p>✔️ সব ট্রেডে ২% সার্ভিস ফি কাটা হয়<br>
+          ✔️ Violet ও Number অপশনে হাই প্রফিট, তবে হাই রিস্ক<br>
+          ✔️ Big/Small অপশন সবচেয়ে ব্যালেন্সড: 50% চান্স ও 2x প্রফিট</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notification" id="notification"></div>
+
+  <script>
+    // Generate random candlesticks
+    function createCandlesticks() {
+      const container = document.getElementById('candlestickContainer');
+      const colors = ['green', 'red'];
+      
+      // Create initial candlesticks
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+          createCandlestick(container, colors);
+        }, i * 300);
+      }
+      
+      // Continue creating new candlesticks
+      setInterval(() => {
+        createCandlestick(container, colors);
+      }, 300);
+    }
+    
+    function createCandlestick(container, colors) {
+      const candle = document.createElement('div');
+      candle.className = `candlestick ${colors[Math.floor(Math.random() * colors.length)]}`;
+      
+      // Random position and size
+      const left = Math.random() * 100;
+      const height = 30 + Math.random() * 100;
+      const duration = 10 + Math.random() * 20;
+      
+      candle.style.left = `${left}%`;
+      candle.style.height = `${height}px`;
+      candle.style.animationDuration = `${duration}s`;
+      
+      container.appendChild(candle);
+      
+      // Remove candlestick after animation completes
+      setTimeout(() => {
+        candle.remove();
+      }, duration * 1000);
+    }
+    
+    // Start candlestick animation
+    createCandlesticks();
+    
+    // Set balance from preset buttons
+    function setBalance(amount) {
+      document.getElementById('customBalance').value = amount;
+      document.getElementById('customBalance').focus();
+    }
+    
+    // Show notification
+    function showNotification(message) {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.style.display = 'block';
+      
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 3000);
+    }
+    
+    // Show form and hide results
+    function showForm() {
+      document.getElementById('formSection').classList.remove('hidden');
+      document.getElementById('resultsSection').classList.remove('visible');
+    }
+    
+    // Generate the trading plan
+    function generatePlan() {
+      const balance = parseInt(document.getElementById('customBalance').value);
+      const first = parseInt(document.getElementById('firstTrade').value);
+      
+      if (!balance || balance < 100) {
+        showNotification('Minimum balance must be 100');
+        return;
+      }
+      
+      // Hide form and show results
+      document.getElementById('formSection').classList.add('hidden');
+      document.getElementById('resultsSection').classList.add('visible');
+      document.getElementById('resultsBody').innerHTML = '';
+      
+      let available = balance;
+      let trade = first && first > 0 ? first : Math.floor(balance / 100);
+      let step = 1;
+      let totalLoss = 0;
+      let nextTrade = trade;
+      let fullLoss = 0;
+      let totalUsed = 0;
+
+      let tableHTML = '';
+      
+      while (available >= nextTrade) {
+        let grossReturn = nextTrade * 1.98;
+        let fee = (grossReturn - nextTrade) * 0.02;
+        let netReturn = grossReturn - fee;
+        let netProfit = netReturn - nextTrade;
+        let remainingLoss = netProfit < totalLoss ? totalLoss - netProfit : 0;
+        fullLoss += nextTrade;
+        totalUsed += nextTrade;
+
+        tableHTML += `
+          <tr>
+            <td>${step}</td>
+            <td>${nextTrade.toFixed(2)}</td>
+            <td class="profit">${netProfit.toFixed(2)}</td>
+            <td>${(nextTrade + netProfit).toFixed(2)}</td>
+            <td class="loss">${remainingLoss.toFixed(2)}</td>
+            <td>${fullLoss.toFixed(2)}</td>
+          </tr>
+        `;
+
+        available -= nextTrade;
+        totalLoss += nextTrade;
+        nextTrade *= 2;
+        step++;
+      }
+
+      if (nextTrade > 0 && available >= 0) {
+        let shortfall = nextTrade - available;
+        tableHTML += `
+          <tr class="warning-row">
+            <td>${step}</td>
+            <td>${nextTrade.toFixed(2)}</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>Short: ${shortfall.toFixed(2)}</td>
+          </tr>
+        `;
+      }
+
+      tableHTML += `
+        <tr class="total-row">
+          <td colspan="5">Total Steps: ${step - 1}, Total Used:</td>
+          <td>${totalUsed.toFixed(2)}</td>
+        </tr>
+      `;
+
+      document.getElementById('resultsBody').innerHTML = tableHTML;
+      
+      // Scroll to top of container
+      document.querySelector('.calculator-container').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  </script>
+</body>
+</html>
